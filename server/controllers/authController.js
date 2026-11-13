@@ -11,6 +11,17 @@ const publicUser = (user) => ({
     occupation: user.occupation
 });
 
+const startSession = (req, userId) => new Promise((resolve, reject) => {
+    req.session.regenerate((error) => {
+        if (error) return reject(error);
+        req.session.userId = userId.toString();
+        req.session.save((saveError) => {
+            if (saveError) return reject(saveError);
+            resolve();
+        });
+    });
+});
+
 const register = async (req, res, next) => {
     try {
         const { firstName, lastName, email, password, location, description, occupation } = req.body;
@@ -31,7 +42,7 @@ const register = async (req, res, next) => {
             occupation
         });
 
-        req.session.userId = user._id.toString();
+        await startSession(req, user._id);
         res.status(201).json({ message: 'Account created successfully.', user: publicUser(user) });
     } catch (error) {
         next(error);
@@ -47,7 +58,7 @@ const login = async (req, res, next) => {
             return res.status(401).json({ message: 'Invalid email or password.' });
         }
 
-        req.session.userId = user._id.toString();
+        await startSession(req, user._id);
         res.json({ message: 'Login successful.', user: publicUser(user) });
     } catch (error) {
         next(error);

@@ -11,10 +11,19 @@ import photoRoutes from './routes/photoRoutes.js';
 import commentRoutes from './routes/commentRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
 
+if (!process.env.MONGODB_URI) {
+    throw new Error('MONGODB_URI is missing. Add it to server/.env.');
+}
+if (!process.env.SESSION_SECRET) {
+    throw new Error('SESSION_SECRET is missing. Add it to server/.env.');
+}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const uploadDirectory = path.join(process.cwd(), 'uploads');
 mkdirSync(uploadDirectory, { recursive: true });
+
+if (process.env.NODE_ENV === 'production') app.set('trust proxy', 1);
 
 app.use(cors({
     origin: process.env.CLIENT_URL || 'http://localhost:5173',
@@ -24,7 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
     name: 'alzikrayat.sid',
-    secret: process.env.SESSION_SECRET || 'development-only-change-this-secret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
