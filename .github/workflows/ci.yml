@@ -28,7 +28,7 @@ jobs:
         run: npm install --prefix client
 
       - name: Check server JavaScript syntax
-        run: find server -path 'server/node_modules' -prune -o -name '*.js' -print0 | xargs -0 -n1 node --check
+        run: find server -path 'server/node_modules' -prune -o -name '*.js' -exec node --check {} \\\;
 
       - name: Build React frontend
         run: npm run build --prefix client

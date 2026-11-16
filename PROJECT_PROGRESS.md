@@ -22,7 +22,7 @@ Rebuild the original Alzikrayat PHP photo-sharing application as a MERN applicat
 - Original Alzikrayat colors, typography, logo treatment, navigation, archive language, and gallery layout choices are retained.
 
 ## Implemented
-- [x] Initial repository README and project structure
+- [x] Initial repository structure and README
 - [x] Express server, MongoDB connection, and session setup
 - [x] User, Photo, and Comment Mongoose models
 - [x] Joi validation middleware and authentication middleware
@@ -33,14 +33,13 @@ Rebuild the original Alzikrayat PHP photo-sharing application as a MERN applicat
 - [x] Navbar, footer, photo card, and loading component
 - [x] Home, gallery layouts, photo detail, login/register, and upload pages
 - [x] Responsive styling based on the original PHP project
+- [x] GitHub Actions dependency installation, server syntax checks, and React production build
 
-## Remaining
-- [ ] Review all generated source files and correct any integration issues
-- [ ] Install dependencies and run backend/frontend locally
+## Remaining verification
+- [ ] Configure `server/.env` with a working MongoDB URI and a strong session secret
+- [ ] Run the server and frontend locally
 - [ ] Test registration, login, session persistence, upload, deletion ownership, and comments against MongoDB
-- [ ] Verify client production build
-- [ ] Complete any fixes found during testing
-- [ ] Finalize README and submission notes
+- [ ] Check the UI in a browser at desktop and mobile widths
 
 ## Commit history note
 The requested work sequence is organized from 9 November onward. Git commit timestamps are kept truthful and reflect when commits are actually created; no commits are backdated.
