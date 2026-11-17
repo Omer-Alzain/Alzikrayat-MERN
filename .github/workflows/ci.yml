@@ -28,7 +28,10 @@ jobs:
         run: npm install --prefix client
 
       - name: Check server JavaScript syntax
-        run: find server -path 'server/node_modules' -prune -o -name '*.js' -exec node --check {} \\\;
+        run: |
+          for file in $(find server -path 'server/node_modules' -prune -o -name '*.js' -print); do
+            node --check "$file"
+          done
 
       - name: Build React frontend
         run: npm run build --prefix client
