@@ -1,4 +1,4 @@
-# Alzikrayat — MERN Edition
+# Alzikrayat — V2 MERN STACK 
 
 Alzikrayat is a photo-sharing application rebuilt from the original PHP project using MongoDB, Express, React, and Node.js. It keeps the original archive idea and visual identity while moving the pages to a React frontend and the data operations to a REST API.
 
