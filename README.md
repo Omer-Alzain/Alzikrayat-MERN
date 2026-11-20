@@ -84,7 +84,7 @@ Never commit `server/.env`. The repository includes an example file only.
 | `GET` | `/api/photos/:id` | Get a photo and its comments |
 | `POST` | `/api/photos` | Upload a photo (login required) |
 | `DELETE` | `/api/photos/:id` | Delete an owned photo (login required) |
-| `POST` | `/api/photos/:id/comments` | Add a comment (login required) |
+| `POST` | `/api/comments/:photoId` | Add a comment (login required) |
 | `GET` | `/api/health` | Check API status |
 
 The frontend uses the Vite development proxy for `/api` and `/uploads`. The server uses an HTTP-only session cookie; passwords are never returned by the API. The Project 3 requirements do not require JWT authentication.
