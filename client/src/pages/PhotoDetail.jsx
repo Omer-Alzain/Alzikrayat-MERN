@@ -36,7 +36,7 @@ const PhotoDetail = () => {
         setSending(true);
         setError('');
         try {
-            const data = await api.post(`/api/photos/${id}/comments`, { comment });
+            const data = await api.post(`/api/comments/${id}`, { comment });
             setComments((current) => [...current, data.comment]);
         } catch (err) {
             setError(err.message);
