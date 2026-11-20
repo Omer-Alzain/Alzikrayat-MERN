@@ -53,7 +53,7 @@ app.use('/uploads', express.static(uploadDirectory));
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 app.use('/api/auth', authRoutes);
 app.use('/api/photos', photoRoutes);
-app.use('/api/comments', commentRoutes);
+app.use('/api/photos', commentRoutes);
 app.use((req, res) => res.status(404).json({ message: 'Route not found.' }));
 app.use(errorHandler);
 
