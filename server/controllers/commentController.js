@@ -3,7 +3,7 @@ import Comment from '../models/Comment.js';
 
 const create = async (req, res, next) => {
     try {
-        const photo = await Photo.findById(req.params.id);
+        const photo = await Photo.findById(req.params.photoId);
         if (!photo) return res.status(404).json({ message: 'Photo not found.' });
 
         const comment = await Comment.create({
